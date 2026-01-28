@@ -1,0 +1,289 @@
+/* =====================================================
+   DESIGN TOKENS
+===================================================== */
+:root {
+  /* Core Colors */
+  --color-primary: #0f172a;      /* Azul escuro tech */
+  --color-secondary: #ffffff;
+  --color-accent: #facc15;       /* Amarelo vibrante */
+  --color-accent-hover: #eab308;
+  --color-bg: #f1f5f9;
+  --color-card: #ffffff;
+  --color-text: #020617;
+  --color-muted: #64748b;
+
+  /* Typography */
+  --font-family-base: 'Inter', system-ui, sans-serif;
+
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 26px;
+
+  /* Spacing */
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Shadow */
+  --shadow-sm: 0 4px 12px rgba(0,0,0,.08);
+  --shadow-md: 0 15px 35px rgba(0,0,0,.15);
+
+  /* Animation */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --fast: 0.2s var(--ease);
+  --normal: 0.4s var(--ease);
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+  color: var(--color-text);
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.header {
+  background: linear-gradient(135deg, var(--color-primary), #020617);
+  padding: var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.header h1 {
+  color: var(--color-secondary);
+  font-size: var(--fs-xl);
+  letter-spacing: 1px;
+  animation: slideDown 0.8s var(--ease);
+}
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--space-6);
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-5);
+  animation: fadeIn 0.6s ease-in;
+}
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+.product-card {
+  background: var(--color-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--normal), box-shadow var(--normal);
+  cursor: pointer;
+  position: relative;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(250, 204, 21, 0.15),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--fast);
+}
+
+.product-card:hover::before {
+  opacity: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+.product-card img {
+  height: 220px;
+  object-fit: contain;
+  padding: var(--space-4);
+  transition: transform var(--normal);
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.product-card-content {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.product-card h3 {
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+.product-card p {
+  font-size: var(--fs-sm);
+  color: var(--color-muted);
+}
+
+.product-card .price {
+  margin-top: auto;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--color-secondary);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 450px;
+  padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  animation: scaleUp 0.4s var(--ease);
+  position: relative;
+}
+
+.modal img {
+  height: 240px;
+  object-fit: contain;
+  margin-bottom: var(--space-4);
+}
+
+.modal h2 {
+  font-size: var(--fs-lg);
+}
+
+.modal p {
+  color: var(--color-muted);
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.modal strong {
+  font-size: var(--fs-lg);
+  color: var(--color-primary);
+}
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--color-accent);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background var(--fast), transform var(--fast);
+}
+
+.close-btn:hover {
+  background: var(--color-accent-hover);
+  transform: rotate(90deg);
+}
+
+/* =====================================================
+   UTILITIES
+===================================================== */
+.hidden {
+  display: none;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .product-card img {
+    height: 180px;
+  }
+}
