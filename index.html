@@ -5,7 +5,6 @@
   <title>Vitrine de Produtos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS separado -->
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -20,7 +19,7 @@
     </section>
   </main>
 
-  <!-- MODAL -->
+  
   <div id="modal-overlay" class="modal-overlay hidden">
     <div class="modal" role="dialog" aria-modal="true">
       <button id="close-modal" class="close-btn" aria-label="Fechar modal">×</button>
@@ -32,16 +31,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
   <script>
-    /**
-     * @typedef {Object} Product
-     * @property {string} productName
-     * @property {string} descriptionShort
-     * @property {string} photo
-     * @property {number} price
-     */
-
     const API_URL = './produtos.json';
 
 
@@ -70,9 +60,6 @@
       }
     }
 
-    /**
-     * @param {Product[]} products
-     */
     function renderProducts(products) {
       grid.innerHTML = '';
 
@@ -91,10 +78,7 @@
         grid.appendChild(card);
       });
     }
-
-    /**
-     * @param {Product} product
-     */
+    
     function openModal(product) {
       modalImage.src = product.photo;
       modalImage.alt = product.productName;
