@@ -1,4 +1,4 @@
-# 🛍️ Vitrine de Produtos – Frontend
+# 🛍️ Vitrine de Produtos – Frontend Econverse.
 
 Este projeto consiste em uma **vitrine de produtos interativa**, desenvolvida com foco em **boas práticas de Frontend**, **organização de código**, **animações suaves** e **experiência do usuário**, simulando um cenário real de e-commerce.
 
@@ -44,3 +44,4 @@ O objetivo é demonstrar domínio de **HTML semântico**, **CSS moderno com arqu
 ├── index.html        # Estrutura principal da aplicação
 ├── style.css         # Estilos globais e componentes
 └── script.js         # Lógica de renderização e interações
+
